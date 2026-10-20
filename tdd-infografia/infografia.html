@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Infografía TDD</title>
+<style>
+@page{size:1200px 2300px;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1200px;height:2300px;font-family:"Helvetica Neue",Arial,sans-serif;background:#f4f6fb;color:#1f2a44;overflow:hidden}
+header{background:linear-gradient(135deg,#1f2a44,#3b4a7a);color:#fff;padding:48px 60px;text-align:center}
+header h1{font-size:50px;letter-spacing:1px}
+header p{font-size:22px;margin-top:12px;opacity:.9}
+.tag{display:inline-block;margin-top:16px;background:#f5a623;color:#1f2a44;font-weight:700;padding:6px 18px;border-radius:20px;font-size:16px}
+h2{font-size:30px;text-align:center;margin:36px 0 18px;color:#1f2a44}
+.cycle{display:flex;justify-content:center;align-items:center;gap:16px;padding:0 50px}
+.phase{flex:1;border-radius:18px;padding:22px 20px;color:#fff;text-align:center;min-height:200px}
+.phase .n{font-size:42px;font-weight:800}
+.phase h3{font-size:26px;margin:4px 0 8px}
+.phase p{font-size:17px;line-height:1.35}
+.red{background:#d9534f}.green{background:#2e9e5b}.blue{background:#2f6fb5}
+.arrow{font-size:40px;color:#3b4a7a;font-weight:700}
+.loop{text-align:center;font-size:18px;color:#3b4a7a;margin-top:10px;font-weight:600}
+.steps{padding:0 60px}
+.step{display:flex;gap:18px;align-items:flex-start;background:#fff;border-radius:14px;padding:14px 20px;margin-bottom:12px;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.step .num{flex:none;width:44px;height:44px;border-radius:50%;background:#f5a623;color:#1f2a44;font-weight:800;font-size:22px;display:flex;align-items:center;justify-content:center}
+.step b{font-size:20px}
+.step span{display:block;font-size:16px;margin-top:3px;line-height:1.35;color:#43506e}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:0 60px}
+.card{background:#fff;border-radius:14px;padding:18px 20px;border-top:6px solid #2f6fb5;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.card h4{font-size:20px;margin-bottom:6px}
+.card p{font-size:16px;line-height:1.4;color:#43506e}
+.card.o{border-top-color:#f5a623}
+.dft{margin:0 60px;background:#1f2a44;color:#fff;border-radius:16px;padding:20px 26px}
+.dft ul{margin:8px 0 0 22px;font-size:17px;line-height:1.5}
+footer{padding:20px 60px;font-size:13.5px;color:#43506e;line-height:1.45}
+</style></head><body>
+<header>
+<h1>Desarrollo Dirigido por Pruebas (TDD)</h1>
+<p>Escribe primero la prueba, después el código: calidad desde el inicio</p>
+<span class="tag">Calidad de Software · Actividad 16</span>
+</header>
+
+<h2>El ciclo Rojo – Verde – Refactorizar</h2>
+<div class="cycle">
+<div class="phase red"><div class="n">1</div><h3>ROJO</h3><p>Escribe una prueba automatizada de una pequeña funcionalidad. Al ejecutarla, <b>falla</b> porque el código aún no existe.</p></div>
+<div class="arrow">➜</div>
+<div class="phase green"><div class="n">2</div><h3>VERDE</h3><p>Escribe el código mínimo necesario para que la prueba <b>pase</b>.</p></div>
+<div class="arrow">➜</div>
+<div class="phase blue"><div class="n">3</div><h3>REFACTORIZAR</h3><p>Mejora el diseño y elimina duplicación sin cambiar el comportamiento; las pruebas deben seguir en verde.</p></div>
+</div>
+<div class="loop">↺ Se repite para cada incremento de funcionalidad</div>
+
+<h2>Pasos del TDD</h2>
+<div class="steps">
+<div class="step"><div class="num">1</div><div><b>Identificar el incremento de funcionalidad</b><span>Elegir una mejora pequeña, que pueda implementarse en pocas líneas de código.</span></div></div>
+<div class="step"><div class="num">2</div><div><b>Escribir una prueba automatizada para esa funcionalidad</b><span>La prueba define el comportamiento esperado antes de programar.</span></div></div>
+<div class="step"><div class="num">3</div><div><b>Ejecutar la prueba junto con las demás pruebas existentes</b><span>La nueva prueba debe fallar (rojo); así se comprueba que la prueba realmente detecta la ausencia de la funcionalidad.</span></div></div>
+<div class="step"><div class="num">4</div><div><b>Implementar la funcionalidad</b><span>Escribir solo el código necesario para satisfacer la prueba.</span></div></div>
+<div class="step"><div class="num">5</div><div><b>Volver a ejecutar las pruebas</b><span>Si alguna falla, corregir el código y repetir hasta que todas pasen (verde).</span></div></div>
+<div class="step"><div class="num">6</div><div><b>Refactorizar y pasar al siguiente incremento</b><span>Limpiar el código, confirmar que todo sigue en verde y reiniciar el ciclo con la siguiente funcionalidad.</span></div></div>
+</div>
+
+<h2>Beneficios del TDD</h2>
+<div class="grid">
+<div class="card"><h4>✔ Cobertura del código</h4><p>Cada segmento de código tiene al menos una prueba asociada, porque se escribió para satisfacerla.</p></div>
+<div class="card"><h4>✔ Pruebas de regresión</h4><p>Se construye una suite que permite detectar si un cambio nuevo rompe algo que ya funcionaba.</p></div>
+<div class="card o"><h4>✔ Depuración simplificada</h4><p>Cuando una prueba falla, es claro dónde está el problema: en el código recién escrito.</p></div>
+<div class="card o"><h4>✔ Documentación del sistema</h4><p>Las pruebas describen qué debe hacer el código y sirven como documentación viva.</p></div>
+</div>
+
+<h2>Diseño para la facilidad de prueba</h2>
+<div class="dft"><b style="font-size:20px">Un código es más fácil de probar con TDD cuando:</b>
+<ul>
+<li>Las clases y funciones son pequeñas y con una sola responsabilidad.</li>
+<li>Existe bajo acoplamiento: las dependencias se inyectan y pueden sustituirse por simulaciones (mocks).</li>
+<li>Se programa contra interfaces claras, con entradas y salidas observables.</li>
+<li>Se evita el estado global y los efectos secundarios ocultos.</li>
+</ul></div>
+
+<h2>TDD y los principios ágiles</h2>
+<div class="grid">
+<div class="card"><h4>Retroalimentación rápida</h4><p>Las pruebas informan en segundos si el cambio funciona, en línea con las entregas frecuentes del desarrollo ágil.</p></div>
+<div class="card o"><h4>Aceptar el cambio con confianza</h4><p>La suite de pruebas protege el sistema al modificar requisitos, y la atención continua a la excelencia técnica mantiene la simplicidad.</p></div>
+</div>
+
+<footer>
+<b>Fuentes consultadas:</b><br>
+Tutsplus. (s. f.). <i>The principles of agile development</i>. Envato Tuts+. https://code.tutsplus.com/the-principles-of-agile-development--net-25732a<br>
+Springer. (2023). Capítulo 23, secciones 23.6 <i>Test-Driven Development</i> y 23.7 <i>Design for Testability</i>. https://link.springer.com/chapter/10.1007/978-3-031-40336-1_23
+</footer>
+</body></html>
